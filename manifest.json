@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "NuTils",
+  "description": "Utilitários para aplicação NuBank web",
+  "version": "1.0",
+  "icons": {
+    "16": "nutils-16.png",
+    "48": "nutils-48.png",
+    "128": "nutils-128.png"
+  },
+  "content_scripts": [{
+    "matches": ["https://*.nubank.com.br/*"],
+    "js": [
+      "utils.js",
+      "generators/OfxGenerator.js",
+      "generators/CsvGenerator.js",
+      "bills.js"
+    ]
+  }]
+}

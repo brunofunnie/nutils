@@ -40,4 +40,19 @@ class Utils {
   normalizeDate(date) {
     return this.normalizeYear(date) + this.normalizeMonth(date) + this.normalizeDay(date);
   }
+
+  getChargesList() {
+    const that = this;
+    const charges = [];
+
+    document.querySelectorAll('.charge:not([style=\'display:none\'])').forEach(function(charge){
+      const date = that.normalizeDate(charge.querySelector('.time').textContent);
+      const description = charge.querySelector('.description').textContent.trim();
+      const amount = that.normalizeAmount(charge.querySelector('.amount').textContent);
+
+      charges.push({ date, description, amount });
+    });
+
+    return charges;
+  }
 }

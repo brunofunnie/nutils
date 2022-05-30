@@ -4,27 +4,13 @@ class BillsAddExportButtons {
     const targetElement = document.querySelector('.bills-browser');
     const config = { attributes: true, childList: true, subtree: true }
     const observer = new MutationObserver(this.insertExportButtonCallback.bind(this));
-    observer.observe(targetElement, config)
-  }
 
-  getChargesList() {
-    const that = this;
-    const charges = [];
-
-    document.querySelectorAll('.charge:not([style=\'display:none\'])').forEach(function(charge){
-      const date = that.utils.normalizeDate(charge.querySelector('.time').textContent);
-      const description = charge.querySelector('.description').textContent.trim();
-      const amount = that.utils.normalizeAmount(charge.querySelector('.amount').textContent);
-
-      charges.push({ date, description, amount });
-    });
-
-    return charges;
+    observer.observe(targetElement || document, config)
   }
 
   generate(exportType) {
     let generator;
-    const data = this.getChargesList();
+    const data = this.utils.getChargesList();
 
     switch (exportType) {
       case 'ofx':

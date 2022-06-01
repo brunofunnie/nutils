@@ -1,5 +1,6 @@
 class BillsAddExportButtons {
   constructor() {
+    console.log('Teste: ', mybills)
     this.utils = new Utils();
     const targetElement = document.querySelector('.bills-browser');
     const config = { attributes: true, childList: true, subtree: true }

@@ -9,6 +9,7 @@
     "128": "imgs/nutils-128.png"
   },
   "content_scripts": [{
+    "run_at": "document_start",
     "matches": ["https://*.nubank.com.br/*"],
     "js": [
       "js/utils.js",
@@ -16,5 +17,11 @@
       "js/generators/CsvGenerator.js",
       "js/bills.js"
     ]
-  }]
+  }],
+  "web_accessible_resources": [
+    {
+      "resources": [ "js/xmlhttprequest-extra.js" ],
+      "matches": ["https://*.nubank.com.br/*"]
+    }
+  ]
 }
